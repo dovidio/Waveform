@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Waveform",
     platforms: [
+        .macOS(.v11),
         .iOS(.v14)
     ],
     products: [

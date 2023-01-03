@@ -30,7 +30,7 @@ public struct Waveform: View {
             ZStack {
                 // invisible rectangle needed to register gestures that aren't on top of the waveform
                 Rectangle()
-                    .foregroundColor(Color(.systemBackground).opacity(0.01))
+                    .foregroundColor(Color(.white).opacity(0.01))
                 
                 Renderer(waveformData: generator.sampleData)
                     .preference(key: SizeKey.self, value: geometry.size)
