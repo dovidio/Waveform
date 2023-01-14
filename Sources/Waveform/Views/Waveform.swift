@@ -87,6 +87,9 @@ public struct Waveform: View {
     }
     
     func zoom(amount: CGFloat) {
+        if amount == 0 {
+            return
+        }
         let count = generator.renderSamples.count
         let newCount = CGFloat(count) / amount
         let delta = (count - Int(newCount)) / 2
