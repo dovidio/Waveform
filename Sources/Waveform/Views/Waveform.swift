@@ -61,6 +61,9 @@ public struct Waveform: View {
     var zoom: some Gesture {
         MagnificationGesture()
             .onChanged {
+                if $0 == 0 {
+                    return
+                }
                 let zoomAmount = $0 / zoomGestureValue
                 zoom(amount: zoomAmount)
                 zoomGestureValue = $0
