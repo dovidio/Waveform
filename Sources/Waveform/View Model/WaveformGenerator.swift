@@ -59,7 +59,7 @@ public class WaveformGenerator: ObservableObject {
         return min(max(0, sample), Int(audioBuffer.frameLength))
     }
     
-    func sample(_ oldSample: Int, with offset: CGFloat) -> Int {
+    public func sample(_ oldSample: Int, with offset: CGFloat) -> Int {
         let ratio = CGFloat(renderSamples.count) / width
         let sample = oldSample + Int(offset * ratio)
         return min(max(0, sample), Int(audioBuffer.frameLength))
