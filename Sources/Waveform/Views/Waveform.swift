@@ -101,7 +101,7 @@ public struct Waveform: View {
         generator.renderSamples = renderStartSample..<renderEndSample
     }
     
-    func pan(offset: CGFloat) {
+    public func pan(offset: CGFloat) {
         let count = generator.renderSamples.count
         var startSample = generator.sample(generator.renderSamples.lowerBound, with: offset)
         var endSample = startSample + count
