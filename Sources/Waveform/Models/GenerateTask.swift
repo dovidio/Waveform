@@ -45,12 +45,12 @@ class GenerateTask {
                 }
                 
                 // sync to hold completion handler until all iterations are complete
-                DispatchQueue.main.async { sampleData[point] = data }
+                DispatchQueue.main.sync { sampleData[point] = data }
             }
             
             DispatchQueue.main.async {
                 // don't call completion if the task has been cancelled
-//                guard !self.isCancelled else { return }
+                guard !self.isCancelled else { return }
                 completion(sampleData)
             }
         }
