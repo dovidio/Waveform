@@ -41,6 +41,7 @@ public class WaveformGenerator: ObservableObject {
         self.audioFile = audioFile
         self.audioBuffer = audioBuffer
         self.renderSamples = 0..<Int(capacity)
+        self.refreshDataInternal()
     }
     
     func refreshData() {
