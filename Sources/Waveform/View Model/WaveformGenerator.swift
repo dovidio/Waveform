@@ -40,8 +40,10 @@ public class WaveformGenerator: ObservableObject {
     
     func refreshData() {
         generateTask?.cancel()
-        generateTask = GenerateTask(audioBuffer: audioBuffer)
-        
+        if generateTask == nil {
+            generateTask = GenerateTask(audioBuffer: audioBuffer)
+        }
+
         generateTask?.resume(width: width, renderSamples: renderSamples) { [weak self] sampleData in
             self?.sampleData = sampleData
         }
