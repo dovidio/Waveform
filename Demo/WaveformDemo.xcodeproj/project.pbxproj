@@ -19,10 +19,11 @@
 		A5AD696825E025DA000B0627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AD696725E025DA000B0627 /* ContentView.swift */; };
 		A5AD696A25E025DB000B0627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AD696925E025DB000B0627 /* Assets.xcassets */; };
 		A5AD696D25E025DB000B0627 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AD696C25E025DB000B0627 /* Preview Assets.xcassets */; };
+		AE58F87429A26726003E18A8 /* Waveform in Frameworks */ = {isa = PBXBuildFile; productRef = AE58F87329A26726003E18A8 /* Waveform */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A51CBD3E25E2EE53004D7255 /* Waveform */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Waveform; path = ..; sourceTree = "<group>"; };
+		A51CBD3E25E2EE53004D7255 /* Waveform */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Waveform; path = ../..; sourceTree = "<group>"; };
 		A52C556125E02CA0008822B1 /* Horizon.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Horizon.aif; sourceTree = "<group>"; };
 		A52C556225E02CA0008822B1 /* Glitch Drum Loop.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Glitch Drum Loop.aif"; sourceTree = "<group>"; };
 		A52C556625E02CAE008822B1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51CBD4125E2EE6B004D7255 /* Waveform in Frameworks */,
+				AE58F87429A26726003E18A8 /* Waveform in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +78,6 @@
 			children = (
 				A5AD696425E025DA000B0627 /* Sources */,
 				A5AD697625E0260C000B0627 /* Resources */,
-				A51CBD3E25E2EE53004D7255 /* Waveform */,
 				A5AD697B25E0272F000B0627 /* Frameworks */,
 				A5AD696325E025DA000B0627 /* Products */,
 			);
@@ -109,6 +110,7 @@
 		A5AD697625E0260C000B0627 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A51CBD3E25E2EE53004D7255 /* Waveform */,
 				A52C556025E02C86008822B1 /* Clips */,
 				A52C555F25E02C7C008822B1 /* Music */,
 				A5AD696925E025DB000B0627 /* Assets.xcassets */,
@@ -154,6 +156,7 @@
 			name = WaveformDemo;
 			packageProductDependencies = (
 				A51CBD4025E2EE6B004D7255 /* Waveform */,
+				AE58F87329A26726003E18A8 /* Waveform */,
 			);
 			productName = WaveformDemo;
 			productReference = A5AD696225E025DA000B0627 /* WaveformDemo.app */;
@@ -182,6 +185,9 @@
 				Base,
 			);
 			mainGroup = A5AD695925E025DA000B0627;
+			packageReferences = (
+				AE58F87229A26726003E18A8 /* XCRemoteSwiftPackageReference "Waveform" */,
+			);
 			productRefGroup = A5AD696325E025DA000B0627 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -347,7 +353,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/WaveformDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = NU8A5Y875P;
+				DEVELOPMENT_TEAM = 37FD2P33ZY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -371,7 +377,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/WaveformDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = NU8A5Y875P;
+				DEVELOPMENT_TEAM = 37FD2P33ZY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -410,9 +416,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AE58F87229A26726003E18A8 /* XCRemoteSwiftPackageReference "Waveform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pixlwave/Waveform";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		A51CBD4025E2EE6B004D7255 /* Waveform */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = Waveform;
+		};
+		AE58F87329A26726003E18A8 /* Waveform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE58F87229A26726003E18A8 /* XCRemoteSwiftPackageReference "Waveform" */;
 			productName = Waveform;
 		};
 /* End XCSwiftPackageProductDependency section */

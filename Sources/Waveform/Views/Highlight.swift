@@ -15,6 +15,8 @@ struct Highlight: Shape {
             let startIndex = Int(startPosition)
             let endIndex = Int(endPosition)
             
+            guard startIndex <= generator.sampleData.count - 1, endIndex <= generator.sampleData.count else { return }
+            
             path.move(to: CGPoint(x: startPosition, y: rect.midY))
             
             for index in startIndex..<endIndex {
