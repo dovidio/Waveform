@@ -42,8 +42,8 @@ public class WaveformGenerator: ObservableObject {
         generateTask?.cancel()
         generateTask = GenerateTask(audioBuffer: audioBuffer)
         
-        generateTask?.resume(width: width, renderSamples: renderSamples) { sampleData in
-            self.sampleData = sampleData
+        generateTask?.resume(width: width, renderSamples: renderSamples) { [weak self] sampleData in
+            self?.sampleData = sampleData
         }
     }
     
