@@ -1,5 +1,6 @@
 import AVFoundation
 import SwiftUI
+import Combine
 
 /// An object that generates waveform data from an `AVAudioFile`.
 public class WaveformGenerator: ObservableObject {
@@ -15,6 +16,8 @@ public class WaveformGenerator: ObservableObject {
     @Published public var renderSamples: SampleRange {
         didSet { refreshData() }
     }
+    
+    var refreshSubject = PassthroughSubject<Void, Never>()
     
     var width: CGFloat = 0 {     // would publishing this be bad?
         didSet { refreshData() }
@@ -39,14 +42,24 @@ public class WaveformGenerator: ObservableObject {
     }
     
     func refreshData() {
-        generateTask?.cancel()
-        generateTask = GenerateTask(audioBuffer: audioBuffer)
-
-        generateTask?.resume(width: width, renderSamples: renderSamples) { [weak self] sampleData in
-            self?.sampleData = sampleData
-        }
+        refreshSubject.send()
     }
-    
+
+    private func refreshDataInternal() {
+        refreshSubject
+            .throttle(for: 1, scheduler: DispatchQueue.main, latest: true)
+            .sink{[weak self] _ in
+                if self == nil {
+                    return
+                }
+                self?.generateTask?.cancel()
+                self?.generateTask = GenerateTask(audioBuffer: self!.audioBuffer)
+                self?.generateTask?.resume(width: self!.width, renderSamples: self!.renderSamples) { [weak self] sampleData in
+                    self!.sampleData = sampleData
+                }
+            }
+    }
+
     // MARK: Conversions
     func position(of sample: Int) -> CGFloat {
         let radio = width / CGFloat(renderSamples.count)
