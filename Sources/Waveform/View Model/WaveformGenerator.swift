@@ -9,6 +9,8 @@ public class WaveformGenerator: ObservableObject {
     /// An audio buffer containing the original audio file decoded as PCM data.
     public let audioBuffer: AVAudioPCMBuffer
     
+    private final var refreshSub: AnyCancellable?
+    
     private var generateTask: GenerateTask?
     @Published private(set) var sampleData: [SampleData] = []
     
@@ -46,7 +48,7 @@ public class WaveformGenerator: ObservableObject {
     }
 
     private func refreshDataInternal() {
-        refreshSubject
+        refreshSub = refreshSubject
             .throttle(for: 1, scheduler: DispatchQueue.main, latest: true)
             .sink{[weak self] _ in
                 if self == nil {
